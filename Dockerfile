@@ -53,6 +53,9 @@ RUN pip install --no-cache-dir fastapi
 
 COPY requirements.txt /
 
+# Set up build deps
+RUN pip install pip setuptools wheel
+
 RUN pip install -r /requirements.txt
 
 # Sorry container size
