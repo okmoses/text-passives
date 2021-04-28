@@ -1,0 +1,6 @@
+Contributions are welcome. Areas that could use some love: build & deploy on
+different versions of python/docker images, error handling, and more textblob
+APIs supported. Please stick to proper http/REST semantics for proposed API
+additions/changes. Open a PR if you want to add more! Only contributions that
+include relevant test coverage will be accepted. I'm not a python expert so bear
+with me.
