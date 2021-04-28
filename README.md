@@ -42,7 +42,7 @@ Current SpaCy version: 3.0.6
 
 ## Endpoints
 ### passives
-Get the passive voice phrases for a given body of text. Returns an array of mixed-type arrays, where each array represents an instance of passive voice. The first element is a string, the second element is the start-index of the phrase (inclusive) and the third element is the end-index of the phrase (exclusive) where indexing count is on words and punctuation.
+Get the passive voice phrases for a given body of text. Returns an array of mixed-type arrays, where each array represents an instance of passive voice. The first element is a string, the second element is the start-index of the first phrase token (inclusive) and the third element is the end-index of the last phrase token (exclusive) where indexing count is on tokens in the parsed text body (ie, words & punctuation)
 
     Endpoint: /passives
     Action: POST
