@@ -1,6 +1,4 @@
 # text-passives
-[![CircleCI](https://circleci.com/gh/MosesMendoza/text-passives.svg?style=shield)](https://circleci.com/gh/MosesMendoza/text-passives)
-
 Goal: a simple, lightweight service for:
 - Detecting the passive phrases within a body of text
 
