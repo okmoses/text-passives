@@ -34,6 +34,12 @@ increase docker resource allocation for build to succeed
     docker build -t text-passives-image .
     docker run -d --name text-passives -p 1234:80 text-passives-image // (replace 1234 with the port you want the container to expose)
 
+## Listen port
+By default w/no intervention the service will listen on port 80 and expose port
+80 on the container. If run locally, map 80 to a different external port to
+avoid conflicts. To set a different listen port on the service and expose a
+different port from the container, pass the API_LISTEN_PORT build argument with
+a port value to docker build. This is required when building for non-local deployment.
 
 ## Stop/destroy
 
@@ -54,39 +60,4 @@ Get the passive voice phrases for a given body of text. Returns an array of mixe
 Example:
 
     curl -X POST -H "Content-Type: application/json" -d '{"text": "The tub is filled with juice. Food ate my bear."}' http://localhost:1234/passives
-
-## Releasing
-### \[DEV RELEASE\] Building & Releasing the text-passives image to DEV AWS Fargate
-Locate the current/latest version and increment w/a new tag
-
-      # list images to find latest version tag of image text-passives
-      docker images
-
-Make sure your local aws credentials are for a user with authorization to push images
-
-Obtain login authorization to push to ECR
-
-  1) Log into the AWS Console in dev or prod (depending on what kind of release)
-  2) Open ECR
-  3) Select 'repositories' in left and open repository for image to be released
-  4) Click the 'View push commands' button in the upper right
-  5) Follow step 1 to authenticate the docker client to AWS
-  6) Copy the commands to tag the image for pushing to AWS ECR
-
-Build and release the image
-
-      # clean the repository
-      git clean -xffd; \
-
-      # build the image
-      export DOCKER_BUILDKIT=1 ;
-      docker build --progress plain \
-                   --platform linux/amd64 \
-                   --tag text-passives:<version> .
-
-      # tag image for release to AWS using command copied in (6) above
-      docker tag text-passives:<version> <aws repository string>/text-passives:<version>
-
-      # push the image to AWS using the command copied in (6) above
-      docker push <aws repository string>/text-passives:<version>
 

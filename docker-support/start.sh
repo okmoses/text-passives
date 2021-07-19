@@ -31,4 +31,5 @@ else
 fi
 
 # Start Gunicorn
-exec gunicorn -k "$WORKER_CLASS" -c "$GUNICORN_CONF" "$APP_MODULE"
+# API_LISTEN_PORT is set by the Dockerfile
+PORT=${API_LISTEN_PORT:-80} exec gunicorn -k "$WORKER_CLASS" -c "$GUNICORN_CONF" "$APP_MODULE"
