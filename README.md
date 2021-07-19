@@ -22,12 +22,14 @@ Current SpaCy version: 3.0.6
     python -m venv env
     . env/bin/activate
     pip install -r requirements_dev.txt
-    python -m spacy download en_core_web_lg
+    python -m spacy download en_core_web_md
     pytest
 
 
 ## Build/run locally
-note that the en_core_web_lg trained model is over 700MB, so you may need to increase docker resource allocation for build to succeed
+This build uses en_core_web_md. Its also possible to use en_core_web_lg but
+note that the en_core_web_lg trained model is over 700MB, so you may need to
+increase docker resource allocation for build to succeed
 
     docker build -t text-passives-image .
     docker run -d --name text-passives -p 1234:80 text-passives-image // (replace 1234 with the port you want the container to expose)

@@ -59,6 +59,6 @@ RUN pip install pip setuptools wheel
 RUN pip install -r /requirements.txt
 
 # Sorry container size
-RUN python -m spacy download en_core_web_lg
+RUN python -m spacy download en_core_web_md
 
 COPY ./app /app/app
