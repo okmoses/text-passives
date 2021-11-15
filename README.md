@@ -27,6 +27,8 @@ Current SpaCy version: 3.0.6
 
 
 ## Build/run locally
+WARNING DO NOT USE THIS TO BUILD FOR AWS DEPLOYMENT - SEE README IN EVOLVED REPO
+
 This build uses en_core_web_md. Its also possible to use en_core_web_lg but
 note that the en_core_web_lg trained model is over 700MB, so you may need to
 increase docker resource allocation for build to succeed
