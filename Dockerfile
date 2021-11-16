@@ -29,6 +29,8 @@
 
 FROM python:3.9.4
 
+# This is used when deploying to AWS or some other system where a port other
+# than 80 is needed
 ARG API_LISTEN_PORT
 ENV API_LISTEN_PORT=${API_LISTEN_PORT:-80}
 
@@ -49,6 +51,7 @@ WORKDIR /app
 
 ENV PYTHONAPP=/app
 
+# This is not used inside the AWS task unless the container is exposed publicly
 EXPOSE ${API_LISTEN_PORT}
 
 CMD ["/start.sh"]
