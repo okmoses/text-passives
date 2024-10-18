@@ -1,0 +1,23 @@
+version: 2.1
+
+orbs:
+  python: circleci/python@0.2.1
+
+jobs:
+  test:
+    docker:
+      - image: circleci/python:3.9.4
+        environment:
+          NLTK_DATA: /root/nltk_data
+    steps:
+      - checkout
+      - run:
+          name: The Second Step
+          command: |
+            ls -al
+            echo 'the files in your repo'
+
+workflows:
+  main:
+    jobs:
+      - test
